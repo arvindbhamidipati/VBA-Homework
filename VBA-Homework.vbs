@@ -60,9 +60,12 @@ Sub Assignment():
             
             
             'Percent Changed
-            Percent_Changed = (Close_n - Open_n) / Open_n
-            Cells(Summary_Table_Row, 11).Value = Format(Percent_Changed, "#.##%")
-            
+            If (Open_n < 0 Or Open_n = 0) Then
+                Percent_Changed = 0
+            Else
+                Percent_Changed = (Close_n - Open_n) / Open_n
+                Cells(Summary_Table_Row, 11).Value = Format(Percent_Changed, "#.##%")
+            End If
             
             
             'Total Stock Volume
